@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>List Expenses</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container text-center">
+    <div>
+        <h2>Create New Expense</h2>
+    </div>
+
+    <form th:action="@{/process_expense}" th:object="${expense}"
+          method="post" style="max-width: 600px; margin: 0 auto;">
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Expense ID: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{expenseId}" class="form-control" required />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Expense Date: </label>
+                <div class="col-8">
+                    <input type="date" th:field="*{date}" class="form-control"
+                           />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Description: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{description}" class="form-control"
+                           required minlength="2" maxlength="20"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Location: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{location}" class="form-control"
+                           required minlength="2" maxlength="20" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Category: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{categoryId}" class="form-control" required />
+                </div>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </form>
+    <div>
+        <a th:href="@{/list_users}"> <button type="submit" class="btn btn-primary">Back</button></a>
+
+    </div>
+</div>
+</body>
+</html>
